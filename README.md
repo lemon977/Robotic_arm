@@ -1,7 +1,8 @@
 # 🚀 Robotic Arm Data & Inference System
 
 面向机器人控制的数据采集、处理与推理系统（Python / ROS / 实时控制）
-完整版工程：* https://github.com/OpenDriveLab/kai0
+完整版工程：
+* https://github.com/OpenDriveLab/kai0
 
 ---
 
