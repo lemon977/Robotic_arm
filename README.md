@@ -12,10 +12,20 @@
 数据采集 → 数据处理 → 推理控制 → 行为回放
 ```
 
-**本人负责：**
-- Python 数据采集脚本及推理设计
-- 推理测试验证
-- 机器臂平台可视化界面（AgileX）
+本项目聚焦于**机器人数据驱动控制（Data-Driven Robotics）**，实现从数据到控制的工程落地。
+
+---
+
+## 👨‍💻 我的工作（重点强化🔥）
+
+在该项目中，我主要负责核心工程实现与系统落地：
+
+* ✅ 设计并实现 **机器人数据采集 Pipeline（ROS1 / ROS2）**
+* ✅ 构建 **数据回放系统（用于离线验证与调试）**
+* ✅ 实现 **基于 OpenPI / RTC 的实时推理控制**
+* ✅ 完成 **机械臂 + 灵巧手协同控制逻辑**
+* ✅ 参与 **AgileX 平台可视化系统集成**
+* ✅ 针对真实硬件进行 **调试与性能优化（低延迟控制）**
 
 ---
 
@@ -28,13 +38,13 @@ Robot Hardware (Arm + Gripper)
 Data Collection (ROS / Python)
         │
         ▼
-Data Management & Visualization
+Data Processing & Management
         │
         ▼
 Inference Engine (OpenPI / RTC)
         │
         ▼
-Control Execution
+Control Execution (Real-time)
 ```
 
 ---
@@ -45,31 +55,14 @@ Control Execution
 Robotic_arm/
 ├── agilex/
 │   ├── demo_inference/
-│   │   ├── start_songling.sh
-│   │   └── kill_songling.sh
 │   └── visualization_platform/
-│       ├── agilex_deploy/
-│       ├── agilex_inference/
-│       ├── kai05_collect/
-│       ├── kai05_collect_management/
-│   ├── agilex_inference_openpi_rtc.py
-│   ├── collect_data.py
-│   ├── gripper_set.py
-│   └── replay_data.py
 │
 ├── arx/
 │   ├── demo_inference/
-│   │   ├── start_fangzhou.sh
-│   │   └── kill_fangzhou.sh
-│   ├── start_template/
-│       ├── arx_start.sh
-│       │── can_start.sh
-│       ├── config/
-│   ├── arx_openpi_inference_rtc.py
-│   ├── collect_data_ros2_noimg.py
-│   └── replay.py
+│   └── start_template/
 │
 ├── LICENSE
+├── THIRD_PARTY_LICENSES.md
 └── README.md
 ```
 
@@ -79,55 +72,42 @@ Robotic_arm/
 
 ### 1️⃣ 数据采集（Data Pipeline）
 
-- 机械臂轨迹采集
-- 灵巧手动作记录
-- ROS2 数据流接入
-- 多源数据同步
+* 机械臂轨迹采集
+* 灵巧手动作记录
+* ROS1 / ROS2 数据流接入
+* 多源数据同步
 
-**核心脚本：**
-- `collect_data.py`
-- `collect_data_ros2_noimg.py`
-- `agilex_inference_openpi_rtc.py`
-- `arx_openpi_inference_rtc.py`
+---
 
 ### 2️⃣ 数据回放（Replay）
 
-- 行为复现
-- 离线调试
-- 推理验证
+* 行为复现
+* 离线调试
+* 推理验证
 
-**核心脚本：**
-- `replay.py`
-- `replay_data.py`
+---
 
 ### 3️⃣ 推理系统（Inference）
 
-- 基于 OpenPI / RTC
-- 实时控制机器人动作
-- 模型输出 → 控制指令
+* 基于 OpenPI / RTC
+* 模型输出 → 控制指令
+* 实时机器人控制（低延迟）
 
-**核心脚本：**
-- `arx_openpi_inference_rtc.py`
-- `agilex_inference_openpi_rtc.py`
+---
 
 ### 4️⃣ 机器人控制
 
-- 支持 ARX / AgileX
-- CAN 通信初始化
-- 自动化启动 / 停止
+* 支持 ARX / AgileX 平台
+* CAN 通信初始化
+* 自动化启动 / 停止脚本
 
-**核心脚本：**
-- `start_*.sh`
-- `kill_*.sh`
+---
 
 ### 5️⃣ 灵巧手控制（Gripper）
 
-- 抓取控制
-- 手指开合
-- 协同机械臂操作
-
-**核心脚本：**
-- `gripper_set.py`
+* 抓取控制
+* 手指开合
+* 与机械臂协同操作
 
 ---
 
@@ -136,60 +116,37 @@ Robotic_arm/
 ### 1. 环境准备
 
 ```bash
-# 安装依赖
 pip install numpy rospy rospkg
-
-# 配置 CAN 通信（如果需要）
 sudo ./can_start.sh
 ```
 
+---
+
 ### 2. 启动机器人
-
-**ARX 平台：**
-```bash
-./arx/start_template/arx_start.sh
-```
-
-**AgileX 平台：**
-```bash
-./agilex/demo_inference/start_songling.sh
-```
-
-### 3. 停止机器人
 
 ```bash
 # ARX
-./arx/demo_inference/kill_fangzhou.sh
+./arx/start_template/arx_start.sh
 
 # AgileX
-./agilex/demo_inference/kill_songling.sh
+./agilex/demo_inference/start_songling.sh
 ```
 
-### 4. 数据采集
+---
+
+### 3. 数据采集
 
 ```bash
-# ROS1 环境
 python collect_data.py
-
-# ROS2 环境（无图像）
 python collect_data_ros2_noimg.py
 ```
 
-### 5. 数据回放
+---
+
+### 4. 推理控制
 
 ```bash
-python replay.py
-# 或
-python replay_data.py
-```
-
-### 6. 推理控制
-
-```bash
-# ARX 平台
 python arx_openpi_inference_rtc.py
-
-# AgileX 平台
 python agilex_inference_openpi_rtc.py
 ```
 
@@ -197,51 +154,57 @@ python agilex_inference_openpi_rtc.py
 
 ## 🧰 技术栈
 
-| 类别 | 技术 |
-|------|------|
-| 编程语言 | Python |
-| 机器人中间件 | ROS1 / ROS2 |
-| 操作系统 | Linux / Ubuntu |
-| 硬件通信 | CAN 通信 |
-| 推理框架 | OpenPI / RTC |
-| 数据处理 | NumPy |
+| 类别     | 技术             |
+| ------ | -------------- |
+| 编程语言   | Python         |
+| 机器人中间件 | ROS1 / ROS2    |
+| 操作系统   | Linux / Ubuntu |
+| 通信     | CAN            |
+| 推理框架   | OpenPI / RTC   |
+| 数据处理   | NumPy          |
 
 ---
 
-## 📊 项目总结
+## 📊 项目亮点（面试加分🔥）
 
-### ✅ 完成内容
-
-- [x] 搭建完整机器人数据闭环系统（采集 → 推理 → 执行）
-- [x] 支持多机器人平台（ARX / AgileX）
-- [x] 实现实时推理控制（低延迟）
-- [x] 设计数据回放系统用于验证
-- [x] 熟悉 ROS1 / ROS2 数据流与机器人通信
-- [x] 工程结构清晰，具备可扩展性
+* 🚀 实现完整 **机器人数据闭环系统**
+* 🤖 支持 **多机器人平台（ARX / AgileX）**
+* ⚡ 实现 **实时推理控制（低延迟）**
+* 🔁 数据回放系统提升调试效率
+* 🧩 工程结构清晰，具备扩展能力
 
 ---
 
 ## 📌 可扩展方向
 
-- [ ] **数据库存储**（PostgreSQL / MongoDB）
-- [ ] **数据标注系统**
-- [ ] **分布式处理**（Spark / Ray）
-- [ ] **Web 可视化**（FastAPI + React）
-- [ ] **仿真环境**（MuJoCo）
+* 数据库（PostgreSQL / MongoDB）
+* 分布式处理（Ray / Spark）
+* Web 可视化（FastAPI + React）
+* 仿真环境（MuJoCo）
 
 ---
 
-## 🙋‍♂️ 关于我
+## 🙏 Acknowledgement
 
-- 机器人方向工程实践
-- 熟悉机械臂 + 灵巧手系统
-- 专注 Python + 数据处理 + 推理系统
+本项目基于以下开源项目进行工程实践与二次开发：
+
+* https://github.com/OpenDriveLab/kai0
+
+感谢原作者的开源贡献。
 
 ---
 
-## 📄 许可证
+## ⚖️ License Notice（很关键）
 
-[LICENSE](./LICENSE)
+* 本项目整体遵循 **Apache License 2.0**
+* 部分代码参考自 kai0（Apache 2.0）
+* 若使用其数据或模型，则受 **CC BY-NC-SA 4.0（非商用）限制**
+
+---
+
+## 📄 License
+
+See [LICENSE](./LICENSE) for details.
 
 ---
 
