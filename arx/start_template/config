@@ -1,0 +1,82 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+[keybindings]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    exit_action = hold
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+  [[arx]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 70:27
+      maximised = True
+      fullscreen = False
+      size = 1850, 1016
+      title = kai@kai: ~
+      last_active_term = e7e77d5b-0f6c-4c73-be95-cc2e2986ed6f
+      last_active_window = True
+    [[[child1]]]
+      type = HPaned
+      parent = child0
+      order = 0
+      position = 364
+      ratio = 0.4993141289437586
+    [[[child2]]]
+      type = VPaned
+      parent = child1
+      order = 0
+      position = 319
+      ratio = 0.5
+    [[[terminal3]]]
+      type = Terminal
+      parent = child2
+      order = 0
+      profile = default
+      uuid = 70976afd-872e-4992-8e53-c57ca9a21b73
+      command = '''bash -i -c 'cmd="ros2 launch arx_x5_controller open_remote_master.launch.py"; eval "$cmd"; history -s "$cmd"; exec bash''''
+      directory = /home/kai
+      title = master
+    [[[terminal4]]]
+      type = Terminal
+      parent = child2
+      order = 1
+      profile = default
+      uuid = f81d56bd-d5bf-4514-9eea-d745ccabda21
+      directory = /home/kai/arx_collect_data/script
+      command = '''bash -i -c 'cmd="conda deactivate && python3 collect_data_ros2_noimg.py --max_timesteps 1500 --save_video --dataset_dir ~/data/hang_test_hdf5 --episode_idx 0";read -e -p "编辑命令后，回车运行：" -i "$cmd" user_cmd; eval "$user_cmd";history -s "$user_cmd"; exec bash''''
+      title = collect
+    [[[child5]]]
+      type = VPaned
+      parent = child1
+      order = 1
+      position = 319
+      ratio = 0.5
+    [[[terminal6]]]
+      type = Terminal
+      parent = child5
+      order = 0
+      profile = default
+      uuid = e7e77d5b-0f6c-4c73-be95-cc2e2986ed6f
+      command = '''bash -i -c 'cmd="ros2 launch arx_x5_controller open_remote_slave.launch.py"; eval "$cmd"; history -s "$cmd"; exec bash''''
+      directory = /home/kai
+      title = slave
+    [[[terminal7]]]
+      type = Terminal
+      parent = child5
+      order = 1
+      profile = default
+      uuid = 7d7d41e0-59ea-4d4d-8248-cef4e60d72f2
+      command = '''bash -i -c 'cmd="conda deactivate && python3 replay.py --hdf5_path /home/kai/data/hang_test_hdf5/aloha_mobile_dummy/episode_0";read -e -p "编辑命令后，回车运行：" -i "$cmd" user_cmd; eval "$user_cmd";history -s "$user_cmd"; exec bash''''
+      directory = /home/kai/arx_collect_data/replay/arx_x5_python
+      title = replay
+[plugins]
