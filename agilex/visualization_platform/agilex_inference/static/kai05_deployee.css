@@ -1,0 +1,230 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+} */
+
+ul {
+    top: auto !important;
+    bottom: auto !important;
+}
+
+#model_popup, #reset_popup {
+    min-height: 500px;
+    width: 1200px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 1000;
+}
+#hh {
+    /* border-top: 1px solid #ccc; */
+    height: 1000px;
+    margin: 20px 0;
+}
+.header {
+    height: 60px;
+    /* background-color: #e0e0e0; */
+    align-items: center;
+    justify-content: center;
+}
+.camera {
+    min-height:350px;
+    /* background-color: #f0f0f0; */
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid #ccc; */
+}
+.content{
+    height:400px;
+    width: 100%;
+    /* background-color: #f8f8f8; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid #ccc; */
+}
+.instruct {
+    height:400px;
+    width: 100%;
+    /* background-color: #e0e0e0; */
+    display: flex;
+}
+.instruct-lamp {
+    height: 200px;
+    width: 100%;
+    /* background-color: #c0c0c0; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.instruct-text {
+    height: 400px;
+    width: 100%;
+    text-align: left;
+    /* background-color: #b0b0b0; */
+    display: flex;
+}
+.instruct-text span {
+    width: 100%;
+    font-size: 20px;
+    margin: 40px 70px;
+    line-height: 10px;
+}
+.operate {
+    height:200px;
+    width: 100%;
+    /* background-color: #d0d0d0; */
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+}
+
+#start_test_btn, #stop_test_btn, #end_machine_btn, #reset_btn, #chooice_model_btn, #start_machine_btn, #see_log_btn {
+    margin: 0 8px;
+    padding: 20px 24px !important;
+    font-size: 24px;
+    cursor: pointer;
+    flex: 0 0 calc(50% - 24px);
+    text-align: center;
+}
+
+#chooice_model_btn, #start_machine_btn, #see_log_btn {
+    flex: 0 0 calc(33.333% - 27px) !important;
+}
+
+.camera-box {
+    width: 100%;
+    aspect-ratio: 16 / 9;   /* ⭐ 高度自然 = 宽度 × 9/16 */
+    color: white;
+    text-align: center;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.lamp-container {
+  flex: 0 0 calc(33.333% - 10.666px);
+  box-sizing: border-box;
+  padding: 8px;
+  text-align: center;
+}
+
+.dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 auto 8px;
+  /* border: 1px solid #999; */
+}
+
+#start_test_btn:hover {
+    /* background-color: greenyellow; */
+    background: greenyellow !important;
+    color: white;
+}
+
+#stop_test_btn:hover {
+    background: palevioletred !important;
+    color: white;
+}
+
+#end_machine_btn:hover {
+    background: blueviolet !important;
+    color: white;
+}
+
+#reset_btn:hover {
+    background: gainsboro !important;
+    color: white;
+}
+
+#model_mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* #op_tips {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    z-index: 1001;
+} */
+
+
+/* 基础样式 + 动画效果 */
+#op_tips {
+    min-height: 50px;
+    /* width: 500px; */
+    position: fixed;
+    /* 初始位置：在可视区域上方（top 为负数） */
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    border-radius: 50%;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    z-index: 1001;
+    /* 动画相关属性 */
+    transition: top .5s ease-out; /* 仅监听top属性的变化，动画时长0.5秒，缓出效果 */
+    opacity: 0; /* 初始透明 */
+
+    /* 1. 移除所有Textbox默认样式 */
+    border: none !important;        /* 移除边框 */
+    box-shadow: none !important;    /* 移除阴影 */
+    outline: none !important;       /* 移除聚焦外框 */
+    background-image: none !important; /* 移除背景图 */
+    resize: none !important;        /* 禁止调整大小 */
+    min-height: auto !important;    /* 移除最小高度限制 */
+    width: auto !important;         /* 宽度自适应文字 */
+    
+    /* 2. 文字居中显示 */
+    text-align: center !important;  /* 水平居中 */
+    vertical-align: middle !important; /* 垂直居中 */
+    font-size: 24px !important;                /* 字体大小（可选） */
+    line-height: 1.5;               /* 行高（优化垂直居中） */
+}
+
+/* 显示时的样式（通过Gradio的visible=True触发） */
+#op_tips.xshow {
+    top: 20px; /* 滑入到目标位置 */
+    opacity: 1; /* 完全不透明 */
+}
+
+#op_tips input {
+    height: 66px;
+    min-width: 500px;
+    text-align: center;
+}
+
+.model_dropdown {
+    padding: 20px !important;
+}
+
+
+.dot.green { background: #22c55e; }
+.dot.red   { background: #ef4444; }
+.dot.gray  { background: #9ca3af; }
+.dot.purple { background: #a855f7; }  /* 运行中 */
+.dot.yellow { background: #eab308; }  /* 正在保存 */
+.dot.orange { background: #f97316; }  /* 警告 */

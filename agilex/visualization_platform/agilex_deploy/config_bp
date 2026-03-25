@@ -1,0 +1,187 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+[keybindings]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    exit_action = hold
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+  [[agx]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 0:27
+      maximised = False
+      fullscreen = False
+      size = 1504, 1016
+      title = agilex@agilex: ~
+      last_active_term = 11909298-730a-400f-bb85-daf79ef310ff
+      last_active_window = True
+    [[[child1]]]
+      type = HPaned
+      parent = child0
+      order = 0
+      position = 534
+      ratio = 0.3465282284231019
+    [[[child2]]]
+      type = VPaned
+      parent = child1
+      order = 0
+      position = 505
+      ratio = 0.5
+    [[[terminal3]]]
+      type = Terminal
+      parent = child2
+      order = 0
+      profile = default
+      uuid = 8979a21c-8783-44b2-b05e-5906acb78eb1
+      command = bash -i -c 'sleep 5; cmd="roslaunch piper start_ms_piper.launch mode:=0 auto_enable:=false"; eval "$cmd"; history -s "roslaunch piper start_ms_piper.launch mode:=1 auto_enable:=true"; history -s "$cmd"; exec bash'
+      title = piper
+      directory = ""
+    [[[terminal4]]]
+      type = Terminal
+      parent = child2
+      order = 1
+      profile = default
+      uuid = cd733a0a-356e-4b77-98e3-314dfc3a74dd
+      command = bash -i -c 'sleep 6; cmd="conda activate aloha && python collect_data_1010.py --dataset_dir ~/data/1030 --max_timesteps 500 --export_video --episode_idx 0"; read -e -p "修改参数后，回车运行：" -i "$cmd" user_cmd; eval "$user_cmd"; history -s "$user_cmd"; exec bash'
+      title = collect_data
+      directory = /home/agilex/collect_data
+    [[[child5]]]
+      type = HPaned
+      parent = child1
+      order = 1
+      position = 524
+      ratio = 0.5208747514910537
+    [[[child6]]]
+      type = VPaned
+      parent = child5
+      order = 0
+      position = 505
+      ratio = 0.5
+    [[[terminal7]]]
+      type = Terminal
+      parent = child6
+      order = 0
+      profile = default
+      uuid = 63b28687-295b-43ef-860d-2f4652bdc42a
+      command = bash -i -c 'sleep 3; cmd="roslaunch realsense2_camera multi_camera.launch"; eval "$cmd"; history -s "$cmd"; exec bash'
+      title = realsense2_camera
+      directory = ""
+    [[[terminal8]]]
+      type = Terminal
+      parent = child6
+      order = 1
+      profile = default
+      uuid = 11909298-730a-400f-bb85-daf79ef310ff
+      command = bash -i -c 'sleep 7; cmd="conda activate aloha && python replay_data_noimg.py --dataset_dir ~/data/1030 --task_name aloha_mobile_dummy --episode_idx 0"; read -e -p "修改参数后，回车运行：" -i "$cmd" user_cmd;  eval "$user_cmd"; history -s "$user_cmd"; exec bash'
+      title = replay
+      directory = /home/agilex/cobot_magic/collect_data
+    [[[child9]]]
+      type = VPaned
+      parent = child5
+      order = 1
+      position = 505
+      ratio = 0.5
+    [[[child10]]]
+      type = VPaned
+      parent = child9
+      order = 0
+      position = 250
+      ratio = 0.5
+    [[[terminal11]]]
+      type = Terminal
+      parent = child10
+      order = 0
+      profile = default
+      uuid = e346b901-1e2a-4966-a27b-0a9fede6b707
+      command = bash -i -c 'cmd="echo agx | sudo -S ./can_config.sh"; eval "$cmd"; history -s "$cmd"; exec bash'
+      title = can
+      directory = /home/agilex/cobot_magic/Piper_ros_private-ros-noetic
+    [[[terminal12]]]
+      type = Terminal
+      parent = child10
+      order = 1
+      profile = default
+      uuid = 6283cf62-9c42-4b82-a007-609ac2d18958
+      command = bash -i -c 'sleep 1; cmd="roscore"; eval "$cmd"; history -s "$cmd"; exec bash'
+      title = roscore
+    [[[child13]]]
+      type = VPaned
+      parent = child9
+      order = 1
+      position = 252
+      ratio = 0.5
+    [[[terminal14]]]
+      type = Terminal
+      parent = child13
+      order = 0
+      profile = default
+      uuid = 182dbc74-6a75-4a7e-af39-1fc48cf35e0e
+      command = bash -i -c 'sleep 8; cmd="rostopic echo /puppet/joint_left"; eval "$cmd"; history -s "$cmd"; exec bash'
+      title = joint_left
+    [[[terminal15]]]
+      type = Terminal
+      parent = child13
+      order = 1
+      profile = default
+      uuid = a26bcff8-e856-454c-8943-c917934c243c
+      command = bash -i -c 'sleep 9; cmd="rostopic echo /puppet/joint_right"; eval "$cmd"; history -s "$cmd"; exec bash'
+      title = joint_right
+  [[start_tl]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 72:27
+      maximised = False
+      fullscreen = False
+      size = 1419, 1016
+      title = agilex@agilex: ~
+      last_active_term = fec4577b-f60a-4774-a657-5a2829ae8b67
+      last_active_window = True
+    [[[child1]]]
+      type = VPaned
+      parent = child0
+      order = 0
+      position = 217
+      ratio = 0.21463897131552917
+    [[[terminal2]]]
+      type = Terminal
+      parent = child1
+      order = 0
+      profile = default
+      uuid = 850cebbc-72f0-41eb-baad-f7f715721801
+      command = bash -i -c 'jt; history -s jt; exec bash'
+      title = 'jt'
+    [[[child3]]]
+      type = VPaned
+      parent = child1
+      order = 1
+      position = 212
+      ratio = 0.2673392181588903
+    [[[terminal4]]]
+      type = Terminal
+      parent = child3
+      order = 0
+      profile = default
+      uuid = 224def57-d8b5-4495-b8e1-8c82b0081fc7
+      command = bash -i -c 'ktl; history -s ktl; exec bash; history'
+      title = 'ktl'
+    [[[terminal5]]]
+      type = Terminal
+      parent = child3
+      order = 1
+      profile = default
+      uuid = fec4577b-f60a-4774-a657-5a2829ae8b67
+      command = bash -i -c 'tl; history -s tl; exec bash'
+      title = 'tl'
+[plugins]

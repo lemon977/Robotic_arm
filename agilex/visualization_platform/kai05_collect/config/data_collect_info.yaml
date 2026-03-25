@@ -1,0 +1,18 @@
+# nas 存储新采集数据路径
+nas_data_dir: /mnt/nas/kai05_data_hdf5/
+# 本机信息
+endpoint_info: # 提前配置好访问ssh信息，
+  name: endpoint1 # 当前机器编号/名称
+  host: host1  # 当前机器访问地址
+  port: port  # 访问端口号
+# SOP 获取地址，通过socket访问SOP服务分配主机，获得当前机器执行任务
+task_required: # 最终可能根据ip地址，申请当前执行任务
+  name: task_distrubuted_machine # 分配任务的主机名
+  host: # 访问地址
+  port: # 访问端口号
+
+NAS_Service:
+  host: 192.168.9.50 # ip地址
+  port:  9999 # 端口号
+# 数据采集重播频率
+replay_frequencies: 5 # 每采集*条数据，必须重播一次

@@ -1,0 +1,28 @@
+{
+    "219": {
+        "machine_id": "001",
+        "machine_name": "agilex",
+        "max_timesteps": 10000
+    },
+    "104": {
+        "machine_id": "001",
+        "machine_name": "agilex",
+        "max_timesteps": 10000
+    },
+    "19": {
+        "machine_id": "002",
+        "machine_name": "agilex",
+        "max_timesteps": 10000
+    },
+    "22": {
+        "machine_id": "003",
+        "machine_name": "agilex",
+        "max_timesteps": 10000
+    },
+    "83": {
+        "machine_id": "004",
+        "machine_name": "agilex",
+        "max_timesteps": 10000
+    }
+    
+}

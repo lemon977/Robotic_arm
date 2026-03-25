@@ -1,0 +1,31 @@
+{
+    "001": {
+        "version": "v1",
+        "plan_count": 300,
+        "machine_tasks": ["flatten_fold/short_sleeve/flatten_fold_weitiao"]
+    },
+    "002": {
+        "version": "v11",
+        "plan_count": 300,
+        "machine_tasks": ["flatten_fold/short_sleeve/flatten_fold_weitiao"]
+    },
+    "003": {
+        "version": "v11",
+        "plan_count": 300,
+        "machine_tasks": ["flatten_fold/short_sleeve/flatten_fold_weitiao"]
+    },
+    "004": {
+        "version": "v11",
+        "plan_count": 300,
+        "machine_tasks": ["flatten_fold/short_sleeve/flatten_fold_weitiao"]
+    },
+    "test": {
+        "version": "v8",
+        "plan_count": 300,
+        "machine_tasks": [
+            "flatten_fold/short_sleeve/flatten_fold_weitiao",
+            "flatten_fold/short_sleeve/flatten_fold_xihu",
+            "flatten_fold/short_sleeve/flatten_fold_standard"
+        ]
+    }
+}
