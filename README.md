@@ -1,6 +1,7 @@
 # 🚀 Robotic Arm Data & Inference System
 
 面向机器人控制的数据采集、处理与推理系统（Python / ROS / 实时控制）
+完整版工程：* https://github.com/OpenDriveLab/kai0
 
 ---
 
@@ -184,7 +185,7 @@ python agilex_inference_openpi_rtc.py
 
 ## 🙏 Acknowledgement
 
-本项目基于以下开源项目进行工程实践与二次开发：
+本项目为开源项目部分：
 
 * https://github.com/OpenDriveLab/kai0
 
