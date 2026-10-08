@@ -1,3 +1,17 @@
+<div align="center">
+
+# Robotic Arm | Data to Action
+
+**ARX / AgileX 机器人数据采集、轨迹回放与模型推理控制集成。**
+
+`ROS · Python · OpenPI · RTC`
+
+> 项目展示风格：工程案例研究 · 下方保留原有工程文档、状态与安全约束。
+
+</div>
+
+---
+
 # 🚀 Robotic Arm Data & Inference System
 
 面向机器人控制的数据采集、处理与推理系统（Python / ROS / 实时控制）
